@@ -1,0 +1,2 @@
+venv仮想環境起動
+source fleamarket/bin/activate
