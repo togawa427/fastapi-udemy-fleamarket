@@ -36,3 +36,11 @@ def find_by_id(id: int):
         if item.id == id:
             return item
     return None
+
+def find_by_name(name: str):
+    filtered_items = []
+
+    for item in items:
+        if name in item.name:   # item.nameにnameが含まれていたら
+            filtered_items.append(item)
+    return filtered_items
