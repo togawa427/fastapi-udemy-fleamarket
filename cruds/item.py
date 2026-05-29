@@ -44,3 +44,31 @@ def find_by_name(name: str):
         if name in item.name:   # item.nameにnameが含まれていたら
             filtered_items.append(item)
     return filtered_items
+
+def create(item_create):
+    new_item = Item(
+        len(items) + 1,
+        item_create.get("name", "名無しだってばよ"),
+        item_create.get("price"),
+        item_create.get("description"),
+        ItemStatus.ON_SALE
+    )
+    items.append(new_item)
+    return new_item
+
+def update(id:int, item_update):
+    for item in items:
+        if item.id == id:
+            item.name = item_update.get("name", item.name)  # "name"があればそれで上書きし、なければitem.nameのまま
+            item.price = item_update.get("price", item.price)
+            item.description = item_update.get("description", item.description)
+            item.status = item_update.get("status", item.status)
+            return item
+    return None
+
+def delete(id:int):
+    for item in items:
+        if item.id == id:
+            items.remove(item)
+            return item
+    return None
