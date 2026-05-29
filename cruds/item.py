@@ -32,4 +32,7 @@ def find_all():
     return items
 
 def find_by_id(id: int):
-    return items[id-1]
+    for item in items:
+        if item.id == id:
+            return item
+    return None
